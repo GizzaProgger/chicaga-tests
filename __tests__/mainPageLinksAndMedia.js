@@ -136,9 +136,29 @@ describe('Главная страница - заполение формы', () =
         await page.click('.section-contacts .info-schools .item:nth-child(6) >> text=Увидеть вход и парковку')
         await page.click('.fancybox-button.fancybox-button--close')
 
-        // Проверяем
-
         screen = await page.screenshot({ path: `screens/${today}-mapsInContacts-${browserName}.png` })
+        reporter.addAttachment(`${browserName}-Screenshot`, screen, "image/png")
+    })
+
+
+    test('слайдер тренеров английского', async () => {
+        feature = 'Cлайдер тренеров английского'
+        description = 'Cлайдер тренеров английского'
+
+        // Листаем слайдер и ждём тренера
+        await page.click(':nth-match(button[role="presentation"], 2)')
+        await page.waitForSelector('.active >> .name >> text=Наталья')
+
+        await page.click(':nth-match(button[role="presentation"], 2)')
+        await page.waitForSelector('.active >> .name >> text=Алиса')
+
+        await page.click(':nth-match(button[role="presentation"], 2)')
+        await page.waitForSelector('.active .name >> text=Анастасия')
+
+        await page.click(':nth-match(button[role="presentation"], 2)')
+        await page.waitForSelector('.active .name >> text=Кейси')
+
+        screen = await page.screenshot({ path: `screens/${today}-trenersSlider-${browserName}.png` })
         reporter.addAttachment(`${browserName}-Screenshot`, screen, "image/png")
     })
 

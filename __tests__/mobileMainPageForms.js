@@ -5,7 +5,7 @@ const baseurl = "https://m.chicaga.ru/"
 const headfullBrowserState = globalVars.browserState
 const browserName = process.env.BROWSER || globalVars.browser // chromium, firefox, webkit
 
-describe('Главная страница - заполение формы', () => {
+describe('Мобильная главная страница - заполение формы', () => {
     let browser
     let context
     let page
@@ -20,7 +20,8 @@ describe('Главная страница - заполение формы', () =
             slowMo: 100
         })
         context = await browser.newContext({
-            ...devices['Pixel 2'],
+            ...devices['Pixel 5'],
+            acceptDownloads: true
         })
         page = await context.newPage()
         const loginPage = new LoginPage(page)
