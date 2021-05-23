@@ -1,0 +1,48 @@
+{
+  "author": "Alexander Prodan",
+  "dependencies": {
+    "chromedriver": "*",
+    "jest": "*",
+    "playwright": "*"
+  },
+  "description": "Chicaga test with Jest and Expect.",
+  "devDependencies": {
+    "eslint": "*",
+    "eslint-config-airbnb-base": "14.2.1",
+    "eslint-config-prettier": "*",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-prettier": "*",
+    "husky": "*",
+    "jest-allure": "^0.1.3",
+    "lint-staged": "*",
+    "prettier": "*",
+    "pretty-quick": "*"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged --allow-empty"
+    }
+  },
+  "keywords": [
+    "expect",
+    "jest",
+    "playwright",
+    "integration test",
+    "test automation",
+    "javascript"
+  ],
+  "license": "MIT",
+  "lint-staged": {
+    "*.{js}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "name": "chicaga-test",
+  "repository": {},
+  "scripts": {
+    "lint": "npx eslint --ext .js ./ --fix",
+    "test": "jest --detectOpenHandles --forceExit --verbose"
+  },
+  "version": "1.0.0"
+}

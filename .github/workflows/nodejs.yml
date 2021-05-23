@@ -1,0 +1,23 @@
+name: chicaga-test-on-schedule
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '0 20 * * *'
+
+jobs:
+  build:
+    runs-on: windows-latest # or macos-latest, windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15.x
+      - name: 'npm:install'
+        run: npm install
+      - name: test
+        run: npm test
+      - uses: actions/upload-artifact@v2
+        with:
+          name: screenshots
+          path: screens/
