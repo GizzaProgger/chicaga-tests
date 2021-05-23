@@ -219,7 +219,7 @@ describe('Главная страница - заполение формы', () =
         await page.click('text=I finished')
 
         // Проверяем
-        await page.waitForSelector('text=14 / 25')
+        await page.waitForSelector('span:has-text("14 / 25")')
         screen = await page.screenshot({ path: `screens/${today}-testPageRedirect-${browserName}.png` })
         reporter.addAttachment(`${browserName}-Screenshot`, screen, "image/png")
     })
