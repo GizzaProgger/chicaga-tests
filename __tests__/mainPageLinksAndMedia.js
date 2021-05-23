@@ -162,4 +162,29 @@ describe('Главная страница - заполение формы', () =
         reporter.addAttachment(`${browserName}-Screenshot`, screen, "image/png")
     })
 
+
+    test('Видео школа английского номер 1', async () => {
+        feature = 'Видео школа английского номер 1'
+        description = 'Видео школа английского номер 1'
+
+        //
+        await page.click('#buttons-play-pause')
+        await page.click('#buttons-play-pause')
+        // Проверяем
+        screen = await page.screenshot({ path: `screens/${today}-mobileFirstVideo-${browserName}.png` })
+        reporter.addAttachment(`${browserName}-Screenshot`, screen, "image/png")
+    })
+
+    test('Видео Разыгрываем один миллион', async () => {
+        feature = 'Видео Разыгрываем один миллион'
+        description = 'Видео Разыгрываем один миллион'
+
+        //
+        await page.click('.raffle-start-btn')
+        await page.keyboard.press('Escape')
+        // Проверяем
+        screen = await page.screenshot({ path: `screens/${today}-mobileOneMiilionVideo-${browserName}.png` })
+        reporter.addAttachment(`${browserName}-Screenshot`, screen, "image/png")
+
+    })
 })
