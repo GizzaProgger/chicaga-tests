@@ -169,7 +169,7 @@ describe('Главная страница - заполение формы', () =
 
         //
         await page.click('#buttons-play-pause')
-        await page.click('#buttons-play-pause')
+        // await page.click('#buttons-play-pause')
         // Проверяем
         screen = await page.screenshot({ path: `screens/${today}-mobileFirstVideo-${browserName}.png` })
         reporter.addAttachment(`${browserName}-Screenshot`, screen, "image/png")
