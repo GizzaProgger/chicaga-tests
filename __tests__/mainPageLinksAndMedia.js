@@ -17,7 +17,7 @@ describe('Главная страница - заполение формы', () =
         browser = await { chromium, webkit, firefox }[browserName].launch({
             headless: headfullBrowserState,
             args: ['--disable-dev-shm-usage'],
-            slowMo: 500
+            slowMo: 200
         })
         context = await browser.newContext({
             viewport: { width: 1920, height: 1080 }
@@ -102,7 +102,7 @@ describe('Главная страница - заполение формы', () =
         await page.click('a:has-text("Close")')
     })
 
-    test('вызов видео в buy', async () => {
+    test('вызов видео в buy / видео Школа английского номер 1', async () => {
         feature = 'Вызов видео в buy'
         description = 'Вызов видео в buy и закрытие'
 
@@ -159,18 +159,6 @@ describe('Главная страница - заполение формы', () =
         await page.waitForSelector('.active .name >> text=Кейси')
 
         screen = await page.screenshot({ path: `screens/${today}-trenersSlider-${browserName}.png` })
-        reporter.addAttachment(`${browserName}-Screenshot`, screen, "image/png")
-    })
-
-    test('Видео школа английского номер 1', async () => {
-        feature = 'Видео школа английского номер 1'
-        description = 'Видео школа английского номер 1'
-
-        //
-        await page.click('#buttons-play-pause')
-        // await page.click('#buttons-play-pause')
-        // Проверяем
-        screen = await page.screenshot({ path: `screens/${today}-mobileFirstVideo-${browserName}.png` })
         reporter.addAttachment(`${browserName}-Screenshot`, screen, "image/png")
     })
 
