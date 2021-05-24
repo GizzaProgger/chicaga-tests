@@ -119,7 +119,7 @@ describe('Главная страница - заполение формы', () =
         await page.waitForSelector('text=https://chicaga.ru/edu/')
         screen = await page.screenshot({ path: `screens/${today}-mainPageFormPayFromHead-${browserName}.png` })
         reporter.addAttachment(`${browserName}-Screenshot`, screen, "image/png")
-        await page.click('text=Вернуться в магазин')
+        await page.click('.link_arrow_left')
         await page.click('#unSuccessPayModal [aria-label="Close"]')
     })
 
@@ -143,7 +143,7 @@ describe('Главная страница - заполение формы', () =
         await page.waitForSelector('text=https://chicaga.ru/edu/')
         screen = await page.screenshot({ path: `screens/${today}-mainPageFormPayFromFooter-${browserName}.png` })
         reporter.addAttachment(`${browserName}-Screenshot`, screen, "image/png")
-        await page.click('text=Вернуться в магазин')
+        await page.click('.link_arrow_left')
         await page.click('#unSuccessPayModal [aria-label="Close"]')
     })
 
