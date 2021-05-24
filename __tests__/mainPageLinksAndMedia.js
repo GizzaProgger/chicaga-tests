@@ -17,7 +17,7 @@ describe('Главная страница - заполение формы', () =
         browser = await { chromium, webkit, firefox }[browserName].launch({
             headless: headfullBrowserState,
             args: ['--disable-dev-shm-usage'],
-            slowMo: 200
+            slowMo: 500
         })
         context = await browser.newContext({
             viewport: { width: 1920, height: 1080 }
@@ -87,37 +87,6 @@ describe('Главная страница - заполение формы', () =
         await page.click('#policyModal2 >> [aria-label="Close"]')
     })
 
-    test('вызов видео в advantages', async () => {
-        feature = 'Вызов видео в advantages'
-        description = 'Вызов видео в advantages'
-
-        // Жмём вызова видео
-        await page.click('.rvg-icon')
-        await page.waitForTimeout(1000)
-        // Проверяем
-        await page.isVisible('html5-video-container >> text=Катя Фишер отзыв')
-
-        screen = await page.screenshot({ path: `screens/${today}-videoAdvantages-${browserName}.png` })
-        reporter.addAttachment(`${browserName}-Screenshot`, screen, "image/png")
-        await page.click('a:has-text("Close")')
-    })
-
-    test('вызов видео в buy / видео Школа английского номер 1', async () => {
-        feature = 'Вызов видео в buy'
-        description = 'Вызов видео в buy и закрытие'
-
-        // Жмём вызова видео
-        await page.click('.raffle-start-btn')
-        await page.waitForTimeout(1000)
-        await page.click('.jquery-background-video-pauseplay')
-
-        // Проверяем
-
-        screen = await page.screenshot({ path: `screens/${today}-videoBuy-${browserName}.png` })
-        reporter.addAttachment(`${browserName}-Screenshot`, screen, "image/png")
-        await page.click('#billionModal [aria-label="Close"]')
-    })
-
     test('открытие карт в секции контакты', async () => {
         feature = 'Открытие карт в секции контакты'
         description = 'Открытие карт в секции контакты'
@@ -162,6 +131,18 @@ describe('Главная страница - заполение формы', () =
         reporter.addAttachment(`${browserName}-Screenshot`, screen, "image/png")
     })
 
+    test('Видео школа Chicaga Live / #video', async () => {
+        feature = 'Видео школа английского номер 1'
+        description = 'Видео школа английского номер 1'
+
+        //
+        await page.click('.section-video .jquery-background-video-pauseplay')
+
+        // Проверяем
+        screen = await page.screenshot({ path: `screens/${today}-mobileFirstVideo-${browserName}.png` })
+        reporter.addAttachment(`${browserName}-Screenshot`, screen, "image/png")
+    })
+
     test('Видео Разыгрываем один миллион', async () => {
         feature = 'Видео Разыгрываем один миллион'
         description = 'Видео Разыгрываем один миллион'
@@ -174,4 +155,20 @@ describe('Главная страница - заполение формы', () =
         reporter.addAttachment(`${browserName}-Screenshot`, screen, "image/png")
 
     })
+
+    test('вызов видео в advantages', async () => {
+        feature = 'Вызов видео в advantages'
+        description = 'Вызов видео в advantages'
+
+        // Жмём вызова видео
+        await page.click('.rvg-icon')
+        await page.waitForTimeout(1000)
+        // Проверяем
+        await page.isVisible('html5-video-container >> text=Катя Фишер отзыв')
+
+        screen = await page.screenshot({ path: `screens/${today}-videoAdvantages-${browserName}.png` })
+        reporter.addAttachment(`${browserName}-Screenshot`, screen, "image/png")
+        await page.click('a:has-text("Close")')
+    })
+
 })
