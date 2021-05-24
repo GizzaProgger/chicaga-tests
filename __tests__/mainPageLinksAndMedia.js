@@ -17,7 +17,7 @@ describe('Главная страница - заполение формы', () =
         browser = await { chromium, webkit, firefox }[browserName].launch({
             headless: headfullBrowserState,
             args: ['--disable-dev-shm-usage'],
-            slowMo: 300
+            slowMo: 500
         })
         context = await browser.newContext({
             viewport: { width: 1920, height: 1080 }
@@ -118,9 +118,9 @@ describe('Главная страница - заполение формы', () =
         await page.click('#billionModal [aria-label="Close"]')
     })
 
-    test('открытие карт в форме контакты', async () => {
-        feature = 'Открытие карт в форме контакты'
-        description = 'Открытие карт в форме контакты'
+    test('открытие карт в секции контакты', async () => {
+        feature = 'Открытие карт в секции контакты'
+        description = 'Открытие карт в секции контакты'
 
         // Жмём вызова видео
         await page.click('.section-contacts .info-schools .item >> text=Увидеть вход и парковку')
@@ -161,7 +161,6 @@ describe('Главная страница - заполение формы', () =
         screen = await page.screenshot({ path: `screens/${today}-trenersSlider-${browserName}.png` })
         reporter.addAttachment(`${browserName}-Screenshot`, screen, "image/png")
     })
-
 
     test('Видео школа английского номер 1', async () => {
         feature = 'Видео школа английского номер 1'
