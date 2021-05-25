@@ -17,7 +17,7 @@ describe('Главная страница - заполение формы', () =
         browser = await { chromium, webkit, firefox }[browserName].launch({
             headless: headfullBrowserState,
             args: ['--disable-dev-shm-usage'],
-            slowMo: 100
+            slowMo: 500
         })
         context = await browser.newContext({
             ...devices['Pixel 2'],
